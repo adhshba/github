@@ -13,7 +13,11 @@ class MyWidget(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        uic.loadUi('untitled.ui', self)
+        self.setGeometry(300, 300, 800, 600)
+        self.setWindowTitle('Окружности')
+        self.pushButton = QPushButton('Pисовать', self)
+        self.pushButton.resize(80, 50)
+        self.pushButton.move(375, 550)
         self.flag = False
         self.pushButton.clicked.connect(self.paint)
 
@@ -26,7 +30,7 @@ class MyWidget(QMainWindow):
 
 
     def draw(self, qp):
-        qp.setBrush(QColor(255, 255, 0))
+        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
         for _ in range(10):
             x = randint(0, 100)
             qp.drawEllipse(randint(0, 800), randint(0, 600), x, x)
